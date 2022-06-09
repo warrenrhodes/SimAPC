@@ -64,8 +64,29 @@ class Chapitre1PrerequisView extends StatelessWidget {
               ? SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Column(children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 15.0),
+                      child: RichText(
+                        text: const TextSpan(
+                            text: 'consigne :  ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: AppColors.kBlackColor),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      ' porter et déposer dans la case réservée le nom correspondant à chaque image ',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15,
+                                      color: AppColors.kBlackColor)),
+                            ]),
+                      ),
+                    ),
                     Card(
-                        color: AppColors.kDarkBlueDarkRGBO,
+                        color: AppColors.kWhiteRGBO,
                         elevation: 3,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
@@ -79,8 +100,29 @@ class Chapitre1PrerequisView extends StatelessWidget {
                   ? SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0, vertical: 15.0),
+                          child: RichText(
+                            text: const TextSpan(
+                                text: 'consigne :  ',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: AppColors.kBlackColor),
+                                children: [
+                                  TextSpan(
+                                      text:
+                                          ' porter et déposer dans la case réservée le nom correspondant à chaque image ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15,
+                                          color: AppColors.kBlackColor)),
+                                ]),
+                          ),
+                        ),
                         Card(
-                            color: AppColors.kDarkBlueDarkRGBO,
+                            color: AppColors.kWhiteRGBO,
                             elevation: 3,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8)),
@@ -94,8 +136,29 @@ class Chapitre1PrerequisView extends StatelessWidget {
                       ? SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
                           child: Column(children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15.0, vertical: 15.0),
+                              child: RichText(
+                                text: const TextSpan(
+                                    text: 'consigne :  ',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: AppColors.kBlackColor),
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              ' porter et déposer dans la case réservée le nom correspondant à chaque image ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 15,
+                                              color: AppColors.kBlackColor)),
+                                    ]),
+                              ),
+                            ),
                             Card(
-                                color: AppColors.kDarkBlueDarkRGBO,
+                                color: AppColors.kWhiteRGBO,
                                 elevation: 3,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
@@ -124,14 +187,14 @@ class Chapitre1PrerequisView extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: AppColors.blue),
+                      color: AppColors.kBlackColor),
                   children: [
                     TextSpan(
                         text: ' Identifier les périphériques de base ',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 15,
-                            color: AppColors.kWhite70)),
+                            color: AppColors.kBlackColor)),
                   ]),
             ),
           ),
@@ -156,7 +219,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                 builder: (context, value, child) {
                                   return DottedBorder(
                                     borderType: BorderType.RRect,
-                                    color: AppColors.kWhite70,
+                                    color: AppColors.kBlackColor,
                                     strokeWidth: 2,
                                     dashPattern: const [8],
                                     child: ClipRRect(
@@ -297,7 +360,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const Lesson1View())),
+                                          builder: (_) => Lesson1View())),
                                   child: const Text('Lesson 1'),
                                 )
                               : TextButton(
@@ -350,7 +413,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 15,
-                            color: AppColors.kWhite70)),
+                            color: AppColors.kBlackColor)),
                   ]),
             ),
           ),
@@ -375,7 +438,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                 builder: (context, value, child) {
                                   return DottedBorder(
                                     borderType: BorderType.RRect,
-                                    color: AppColors.kWhite70,
+                                    color: AppColors.kBlackColor,
                                     strokeWidth: 2,
                                     dashPattern: const [8],
                                     child: ClipRRect(
@@ -515,7 +578,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const Lesson1View())),
+                                          builder: (_) => Lesson1View())),
                                   child: const Text('Lesson 1'),
                                 )
                               : TextButton(
@@ -567,7 +630,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 15,
-                            color: AppColors.kWhite70)),
+                            color: AppColors.kBlackColor)),
                   ]),
             ),
           ),
@@ -592,7 +655,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                 builder: (context, value, child) {
                                   return DottedBorder(
                                     borderType: BorderType.RRect,
-                                    color: AppColors.kWhite70,
+                                    color: AppColors.kBlackColor,
                                     strokeWidth: 2,
                                     dashPattern: const [8],
                                     child: ClipRRect(
@@ -732,7 +795,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const Lesson1View())),
+                                          builder: (_) => Lesson1View())),
                                   child: const Text('Lesson 1'),
                                 )
                               : TextButton(
@@ -786,7 +849,7 @@ class Chapitre1PrerequisView extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                color: AppColors.kWhite70),
+                color: AppColors.kBlackColor),
           ),
         ),
       );

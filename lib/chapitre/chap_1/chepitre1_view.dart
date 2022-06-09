@@ -21,14 +21,15 @@ class Chapitre1View extends StatelessWidget {
           initiallyExpanded: true,
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           childrenPadding: const EdgeInsets.only(left: 40),
-          backgroundColor: AppColors.kDarkBlueDarkRGBO,
+          backgroundColor: AppColors.kWhite70,
+          collapsedBackgroundColor: AppColors.kBlack12,
           title: RichText(
             text: const TextSpan(
                 text: 'Module 1:  ',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: AppColors.blue),
+                    color: AppColors.kBlackColor),
                 children: [
                   TextSpan(
                       text:
@@ -36,7 +37,7 @@ class Chapitre1View extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 15,
-                          color: AppColors.kWhite70)),
+                          color: AppColors.kBlack54)),
                 ]),
           ),
           children: [
@@ -50,24 +51,24 @@ class Chapitre1View extends StatelessWidget {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Card(
-                    color: AppColors.kDarkBlueDarkRGBO,
+                    color: AppColors.green,
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 15.0),
-                      child: Text('PREREQUIS:',
+                      child: Text('Test prérequis',
                           textAlign: TextAlign.left,
-                          style:
-                              TextStyle(fontSize: 15, color: AppColors.blue)),
+                          style: TextStyle(
+                              fontSize: 15, color: AppColors.kBlackColor)),
                     )),
               ),
             ),
             SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Card(
-                    color: AppColors.kDarkBlueDarkRGBO,
+                    color: AppColors.kOrange600,
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
@@ -77,20 +78,21 @@ class Chapitre1View extends StatelessWidget {
                       child: RichText(
                         text: const TextSpan(
                             text: 'Objectifs :',
-                            style:
-                                TextStyle(fontSize: 18, color: AppColors.blue),
+                            style: TextStyle(
+                                fontSize: 18, color: AppColors.kBlackColor),
                             children: [
                               TextSpan(
                                   text:
-                                      " \n 👉 Identifier les différents ports d'un ordinateur; \n 👉 Connecter et déconnecter les périphériques de base,\n 👉 démarrer l'ordinateur.",
+                                      " \n 👉 interconnecter les éléments de base d’un ordinateur ; \n 👉 démarrer l'ordinateur.",
                                   style: TextStyle(
-                                      fontSize: 15, color: AppColors.kWhite70)),
+                                      fontSize: 15,
+                                      color: AppColors.kBlackColor)),
                             ]),
                       ),
                     ))),
             const SizedBox(height: 10),
             Card(
-              color: AppColors.kDarkBlueDarkRGBO,
+              color: AppColors.kOrange600,
               elevation: 3,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
@@ -104,12 +106,14 @@ class Chapitre1View extends StatelessWidget {
                   title: RichText(
                     text: const TextSpan(
                         text: "Unite D'apprentissage 1:  ",
-                        style: TextStyle(fontSize: 18, color: AppColors.blue),
+                        style: TextStyle(
+                            fontSize: 18, color: AppColors.kBlackColor),
                         children: [
                           TextSpan(
-                              text: ' Mise en œuvre de l’ordinateur.',
+                              text:
+                                  ' Architecture de base des matériels et des logiciels',
                               style: TextStyle(
-                                  fontSize: 15, color: AppColors.kWhite70)),
+                                  fontSize: 15, color: AppColors.kBlackColor)),
                         ]),
                   ),
                   children: [
@@ -165,14 +169,14 @@ class Chapitre1View extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => const Lesson1View()));
+                                      builder: (_) => Lesson1View()));
                             },
                       child: SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: Card(
                               color: chapitre1Controller.prerequisChapitre1 < 5
                                   ? AppColors.gray.withOpacity(0.5)
-                                  : AppColors.kDarkBlueDarkRGBO,
+                                  : AppColors.green,
                               elevation: 3,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8)),
@@ -183,14 +187,14 @@ class Chapitre1View extends StatelessWidget {
                                   text: const TextSpan(
                                       text: "Unite D'enseignement 1:  ",
                                       style: TextStyle(
-                                          fontSize: 18, color: AppColors.blue),
+                                          fontSize: 18,
+                                          color: AppColors.kBlackColor),
                                       children: [
                                         TextSpan(
-                                            text:
-                                                'Gestion du matériel de l’ordinateur',
+                                            text: 'Démarrage d’un ordinateur',
                                             style: TextStyle(
                                                 fontSize: 15,
-                                                color: AppColors.kWhite70)),
+                                                color: AppColors.kBlackColor)),
                                       ]),
                                 ),
                               ))),

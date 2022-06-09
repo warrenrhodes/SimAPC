@@ -1,15 +1,32 @@
+import 'package:chewie/chewie.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:easy_learning/utils/bouton.dart';
 import 'package:easy_learning/utils/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../../utils/app_colors.dart';
 import 'data.dart';
 import 'lesson1_controller.dart';
 
-class Lesson1View extends StatelessWidget {
-  const Lesson1View({Key? key}) : super(key: key);
+class Lesson1View extends StatefulWidget {
+  @override
+  State<Lesson1View> createState() => _Lesson1ViewState();
+}
+
+class _Lesson1ViewState extends State<Lesson1View> {
+  ChewieController chewieController = ChewieController(
+      videoPlayerController: VideoPlayerController.asset('assets/learning.mp4'),
+      autoInitialize: true,
+      allowFullScreen: false,
+      looping: false);
+
+  @override
+  void dispose() {
+    chewieController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +37,26 @@ class Lesson1View extends StatelessWidget {
           final controller = Provider.of<Lesson1Controller>(context);
           return ScaffoldWidget(
             child: DefaultTabController(
-              length: 3,
+              length: 5,
               child: Scaffold(
-                backgroundColor: AppColors.kDarkHomeRGBO,
+                backgroundColor: AppColors.kWhiteColor,
                 appBar: AppBar(
                   title: const Text("Unite D'apprentissage 1"),
                   centerTitle: true,
-                  backgroundColor: AppColors.kDarkBlueDarkRGBO,
+                  backgroundColor: AppColors.kOrange600,
                   bottom: const TabBar(tabs: [
+                    Text('Probleme'),
                     Text('Cours'),
-                    Text('Exercice 1'),
-                    Text('Exercice 2'),
+                    Text('Test 1'),
+                    Text('Test 2'),
+                    Text('Test 3'),
                   ]),
                 ),
                 body: TabBarView(
                   children: [
+                    _probleme(controller, context),
                     _lesson1(controller, context),
+                    _test1(controller, context),
                     _exoGroup1(controller),
                     _exoGroup2(controller, context),
                   ],
@@ -61,7 +82,7 @@ class Lesson1View extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                   wordSpacing: 3,
-                  color: AppColors.kWhite70),
+                  color: AppColors.kBlackColor),
             ),
           ),
           const Text(
@@ -69,7 +90,7 @@ class Lesson1View extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: AppColors.kWhite70),
+                color: AppColors.kBlackColor),
           ),
           Builder(builder: (context) {
             return Column(
@@ -96,7 +117,7 @@ class Lesson1View extends StatelessWidget {
                                       builder: (context, value, child) {
                                         return DottedBorder(
                                           borderType: BorderType.RRect,
-                                          color: AppColors.kWhite70,
+                                          color: AppColors.kBlackColor,
                                           strokeWidth: 2,
                                           dashPattern: const [8],
                                           child: ClipRRect(
@@ -274,7 +295,7 @@ class Lesson1View extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: AppColors.kWhite70),
+                color: AppColors.kBlackColor),
           ),
           Builder(builder: (context) {
             return Column(
@@ -301,7 +322,7 @@ class Lesson1View extends StatelessWidget {
                                       builder: (context, value, child) {
                                         return DottedBorder(
                                           borderType: BorderType.RRect,
-                                          color: AppColors.kWhite70,
+                                          color: AppColors.kBlackColor,
                                           strokeWidth: 2,
                                           dashPattern: const [8],
                                           child: ClipRRect(
@@ -494,7 +515,7 @@ class Lesson1View extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
                       wordSpacing: 3,
-                      color: AppColors.kWhite70)),
+                      color: AppColors.kBlackColor)),
               _exo1(
                   choiseValueList: controller.choiseValueOfExoLine1,
                   valueResult: "A l’arrière de l’unité centrale",
@@ -510,7 +531,7 @@ class Lesson1View extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
                       wordSpacing: 3,
-                      color: AppColors.kWhite70)),
+                      color: AppColors.kBlackColor)),
               _exo1(
                   choiseValueList: controller.choiseValueOfExoLine2,
                   valueResult:
@@ -527,7 +548,7 @@ class Lesson1View extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
                       wordSpacing: 3,
-                      color: AppColors.kWhite70)),
+                      color: AppColors.kBlackColor)),
               _exo1(
                   choiseValueList: controller.choiseValueOfExoLine3,
                   valueResult: "Couleur et forme",
@@ -544,7 +565,7 @@ class Lesson1View extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
                       wordSpacing: 3,
-                      color: AppColors.kWhite70)),
+                      color: AppColors.kBlackColor)),
               _nameTheDifferentPort(
                 choiseValueList: controller.choiseValueOfExoLine4,
                 valueResult: [
@@ -567,7 +588,7 @@ class Lesson1View extends StatelessWidget {
     );
   }
 
-  SingleChildScrollView _lesson1(
+  SingleChildScrollView _test1(
       Lesson1Controller controller, BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
@@ -575,29 +596,11 @@ class Lesson1View extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Text(
-            "SITUATION PROBLEME",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: AppColors.blue),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(
-              '\nVotre cousin veut assembler son ordinateur (constitué d’une souris, d’un clavier, d’un écran, imprimante, vidéoprojecteur) flambant neuf que lui a offert son papa. Mais il ne s’y connait pas. Pour cela il vous interpelle pour lui venir en aide.',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                  wordSpacing: 3,
-                  color: AppColors.kWhite70),
-            ),
-          ),
-          const Text(
             "\n1. Rassembler les éléments d’un ordinateur",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: AppColors.kWhite70),
+                color: AppColors.kBlackColor),
           ),
           Stack(
             children: [
@@ -972,7 +975,7 @@ class Lesson1View extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: AppColors.kWhite70))
+                      color: AppColors.kBlackColor))
             ],
           ),
           const Text(
@@ -980,7 +983,7 @@ class Lesson1View extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: AppColors.kWhite70)),
+                  color: AppColors.kBlackColor)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -1126,7 +1129,7 @@ class Lesson1View extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: AppColors.kWhite70))
+                      color: AppColors.kBlackColor))
             ],
           ),
           const Text(
@@ -1134,7 +1137,7 @@ class Lesson1View extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: AppColors.kWhite70)),
+                  color: AppColors.kBlackColor)),
           Row(
             children: [
               Stack(
@@ -1272,6 +1275,132 @@ class Lesson1View extends StatelessWidget {
     );
   }
 
+  SingleChildScrollView _probleme(
+      Lesson1Controller controller, BuildContext context) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "SITUATION PROBLEME",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: AppColors.blue),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  '\n L’ordinateur Desktop de votre mère est tombé en panne, elle l’a remis à un agent de maintenance pour le réparer. Cet ordinateur  lui a été ramené après dépannage en pièces détachées. Ne s’y connaissant pas du tout dans ce domaine, elle fait appel à vous.\n ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      wordSpacing: 3,
+                      color: AppColors.kBlackColor),
+                ),
+              ),
+              const Text(
+                "Par groupe de deux ou de trois répondez aux questions suivantes: ",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    wordSpacing: 3,
+                    color: AppColors.kBlackColor),
+              ),
+              RichText(
+                text: const TextSpan(
+                    text: 'Test 1:  ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: AppColors.kBlackColor),
+                    children: [
+                      TextSpan(
+                          text:
+                              'Quels composants de bases ont été remis à votre mère ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              color: AppColors.kBlackColor)),
+                    ]),
+              ),
+              RichText(
+                text: const TextSpan(
+                    text: 'Test 2:  ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: AppColors.kBlackColor),
+                    children: [
+                      TextSpan(
+                          text:
+                              'Identifier sur quel port connecter chaque périphérique à l’unité centrale  ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              color: AppColors.kBlackColor)),
+                    ]),
+              ),
+              RichText(
+                text: const TextSpan(
+                    text: 'Test 3:  ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: AppColors.kBlackColor),
+                    children: [
+                      TextSpan(
+                          text: 'Monter les éléments de cet ordinateur',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              color: AppColors.kBlackColor)),
+                    ]),
+              ),
+              RichText(
+                text: const TextSpan(
+                    text: 'Test 4:  ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: AppColors.kBlackColor),
+                    children: [
+                      TextSpan(
+                          text: 'Démarrer l’ordinateur que vous avez monté',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              color: AppColors.kBlackColor)),
+                    ]),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SingleChildScrollView _lesson1(
+      Lesson1Controller controller, BuildContext context) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: Chewie(
+            controller: chewieController,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _exo1({
     required List<String> choiseValueList,
     required String valueResult,
@@ -1312,7 +1441,7 @@ class Lesson1View extends StatelessWidget {
                                         child: Text(
                                       e,
                                       style: const TextStyle(
-                                        color: AppColors.kWhite70,
+                                        color: AppColors.kBlackColor,
                                       ),
                                     ))
                                   ],
@@ -1336,8 +1465,8 @@ class Lesson1View extends StatelessWidget {
                                                           FontWeight.w500,
                                                       fontSize: 15,
                                                       wordSpacing: 5,
-                                                      color:
-                                                          AppColors.kWhite70)),
+                                                      color: AppColors
+                                                          .kBlackColor)),
                                             ]),
                                       )
                                     : const SizedBox(),
@@ -1392,7 +1521,7 @@ class Lesson1View extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                color: AppColors.kWhite70),
+                color: AppColors.kBlackColor),
           ),
         ),
       );
@@ -1494,7 +1623,7 @@ class Lesson1View extends StatelessWidget {
                             Text(
                               e,
                               style: const TextStyle(
-                                color: AppColors.kWhite70,
+                                color: AppColors.kBlackColor,
                               ),
                             ),
                           ],

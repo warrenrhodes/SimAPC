@@ -134,13 +134,13 @@ class AppColors {
   static const Color kGreenRGBO = Color.fromRGBO(0, 212, 162, 1);
 
   /// RGBO purple color.
-  static const Color kDarkHomeRGBO = Color.fromRGBO(35, 48, 64, 1);
+  static const Color kDarkHomeRGBO = Color.fromRGBO(194, 214, 254, 1);
 
   //58, 189, 167, 1
   /// RGBO white light  color.
-  static const Color kWhiteRGBO = Color.fromRGBO(250, 250, 250, 1);
+  static const Color kWhiteRGBO = Color.fromRGBO(250, 250, 250, 28);
 
   //255, 40, 41, 31
   /// RGBO white light  color.
-  static const Color kDarkBlueDarkRGBO = Color.fromARGB(42, 63, 84, 131);
+  static const Color kDarkBlueDarkRGBO = Color.fromARGB(24, 69, 124, 1);
 }

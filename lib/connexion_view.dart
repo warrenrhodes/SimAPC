@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
     );
     return SafeArea(
         child: Scaffold(
-      backgroundColor: AppColors.kDarkHomeRGBO,
+      backgroundColor: AppColors.kWhite70,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(
                 'Welcome to SimAPC',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: AppColors.white, fontSize: 35),
+                style: TextStyle(color: AppColors.kBlackColor, fontSize: 35),
               ),
             ),
             const SizedBox(
@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
                 child: Card(
-                  color: AppColors.kDarkBlueDarkRGBO,
+                  color: AppColors.kOrange600,
                   elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),

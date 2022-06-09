@@ -16,7 +16,7 @@ class ScaffoldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kDarkHomeRGBO,
+      backgroundColor: AppColors.kWhiteColor,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -26,25 +26,41 @@ class ScaffoldWidget extends StatelessWidget {
                   (route) => false),
               icon: const Icon(Icons.logout))
         ],
-        backgroundColor: AppColors.kDarkBlueDarkRGBO,
+        backgroundColor: AppColors.kBlackColor,
         title: const Text("SimAPC"),
       ),
       body: child,
       drawer: Drawer(
-        backgroundColor: AppColors.kDarkHomeRGBO,
+        backgroundColor: AppColors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
+            DrawerHeader(
               //header of drawer
               decoration: BoxDecoration(
-                color: AppColors.kDarkBlueDarkRGBO,
+                color: AppColors.kOrange600,
               ),
-              child: Text(
-                'SimApc',
-                style: TextStyle(
-                  color: AppColors.kWhiteColor,
-                  fontSize: 24,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text(
+                      'SimApc',
+                      style: TextStyle(
+                        color: AppColors.kBlackColor,
+                        fontSize: 24,
+                      ),
+                    ),
+                    Text(
+                      'Class de 6 ème',
+                      style: TextStyle(
+                        color: AppColors.kBlackColor,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -55,11 +71,11 @@ class ScaffoldWidget extends StatelessWidget {
                   (route) => false)),
               leading: const Icon(
                 Icons.home,
-                color: AppColors.kWhite70,
+                color: AppColors.kBlackColor,
               ),
               title: const Text(
                 'Home',
-                style: TextStyle(color: AppColors.kWhite70),
+                style: TextStyle(color: AppColors.kBlackColor),
               ),
             ),
             ListTile(
@@ -70,25 +86,25 @@ class ScaffoldWidget extends StatelessWidget {
                   (route) => false)),
               leading: const Icon(
                 Icons.label_important,
-                color: AppColors.kWhite70,
+                color: AppColors.kBlackColor,
               ),
               title: const Text(
-                'Prenium',
-                style: TextStyle(color: AppColors.kWhite70),
+                'Test Prerequis',
+                style: TextStyle(color: AppColors.kBlackColor),
               ),
             ),
             ListTile(
               onTap: (() => Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const Lesson1View()),
+                  MaterialPageRoute(builder: (context) => Lesson1View()),
                   (route) => false)),
               leading: Icon(
                 Icons.label_important,
-                color: AppColors.kWhite70,
+                color: AppColors.kBlackColor,
               ),
               title: Text(
                 "Unite D'enseignement 1",
-                style: TextStyle(color: AppColors.kWhite70),
+                style: TextStyle(color: AppColors.kBlackColor),
               ),
             ),
           ],
