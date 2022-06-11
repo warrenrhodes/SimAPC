@@ -889,6 +889,16 @@ class Chapitre1PrerequisView extends StatelessWidget {
           Icons.close,
           color: AppColors.red,
         ),
+        FittedBox(
+          child: ElevatedButton(
+              style: roundedSmallButton(Colors.green, 140, 40),
+              onPressed: () {},
+              child: Text(title,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black))),
+        ),
       ]);
     }
   }

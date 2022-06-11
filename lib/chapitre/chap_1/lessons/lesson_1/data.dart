@@ -136,3 +136,122 @@ final computerCableElement = [
     falseValue: '',
   ),
 ];
+
+final computerReponse = {
+  'assets/mouse.png': 'souris',
+  'assets/keyboard.png': 'clavier',
+  'assets/computer.png': 'souris',
+  'assets/monitor.png': 'unité centrale',
+};
+
+final computerElements = [
+  Computer(
+    title: 'souris',
+    falseValue: '',
+    imageUrl: 'assets/mouse.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+  ),
+  Computer(
+    title: 'clavier',
+    imageUrl: 'assets/keyboard.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'clé Usb',
+    imageUrl: 'assets/cles_usb.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'moniteur',
+    imageUrl: 'assets/monitor.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'unité centrale',
+    imageUrl: 'assets/computer.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'haut parleur',
+    imageUrl: 'assets/haut_parleur.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+];
+
+final portReponse = {
+  'assets/souris_p.png': 'port PS2',
+  'assets/usb.png': 'port usb',
+  'assets/clavier_p.png': 'port PS2',
+  'assets/port_a.png': "port d'alimentation",
+  'assets/vga_p.png': 'port vga',
+};
+
+final port = [
+  Computer(
+    title: 'Port Souris',
+    falseValue: '',
+    imageUrl: 'assets/souris_p.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+  ),
+  Computer(
+    title: 'Port Clavier USB',
+    falseValue: '',
+    imageUrl: 'assets/usb.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+  ),
+  Computer(
+    title: 'Port Clavier',
+    imageUrl: 'assets/clavier_p.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'moniteur',
+    imageUrl: 'assets/monitor.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'unité centrale',
+    imageUrl: 'assets/computer.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'haut parleur',
+    imageUrl: 'assets/haut_parleur.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'Port Alimentation',
+    imageUrl: 'assets/port_a.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+  Computer(
+    title: 'Port Moniteur',
+    imageUrl: 'assets/vga_p.png',
+    valueIsDrope: ValueNotifier(false),
+    isCorrectAnswer: ValueNotifier(false),
+    falseValue: '',
+  ),
+];

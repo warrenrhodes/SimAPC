@@ -31,8 +31,8 @@ class _Lesson1ViewState extends State<Lesson1View> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Lesson1Controller>(
-        create: (context) =>
-            Lesson1Controller(exo1Ligne1, exo1Ligne2, exo1Ligne3, exo1Line4),
+        create: (context) => Lesson1Controller(exo1Ligne1, exo1Ligne2,
+            exo1Ligne3, exo1Line4, computerElements, port),
         child: Builder(builder: (context) {
           final controller = Provider.of<Lesson1Controller>(context);
           return ScaffoldWidget(
@@ -45,7 +45,7 @@ class _Lesson1ViewState extends State<Lesson1View> {
                   centerTitle: true,
                   backgroundColor: AppColors.kOrange600,
                   bottom: const TabBar(tabs: [
-                    Text('Probleme'),
+                    Text('Problematique'),
                     Text('Cours'),
                     Text('Test 1'),
                     Text('Test 2'),
@@ -1278,108 +1278,83 @@ class _Lesson1ViewState extends State<Lesson1View> {
   SingleChildScrollView _probleme(
       Lesson1Controller controller, BuildContext context) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "SITUATION PROBLEME",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: AppColors.blue),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  '\n L’ordinateur Desktop de votre mère est tombé en panne, elle l’a remis à un agent de maintenance pour le réparer. Cet ordinateur  lui a été ramené après dépannage en pièces détachées. Ne s’y connaissant pas du tout dans ce domaine, elle fait appel à vous.\n ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      wordSpacing: 3,
-                      color: AppColors.kBlackColor),
-                ),
-              ),
-              const Text(
-                "Par groupe de deux ou de trois répondez aux questions suivantes: ",
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "SITUATION PROBLEME",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: AppColors.blue),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 3),
+              child: Text(
+                '\n L’ordinateur Desktop de votre mère est tombé en panne, elle l’a remis à un agent de maintenance pour le réparer. Cet ordinateur  lui a été ramené après dépannage en pièces détachées. Ne s’y connaissant pas du tout dans ce domaine, elle fait appel à vous.\n ',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     wordSpacing: 3,
                     color: AppColors.kBlackColor),
               ),
-              RichText(
-                text: const TextSpan(
-                    text: 'Test 1:  ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: AppColors.kBlackColor),
-                    children: [
-                      TextSpan(
-                          text:
-                              'Quels composants de bases ont été remis à votre mère ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                              color: AppColors.kBlackColor)),
-                    ]),
-              ),
-              RichText(
-                text: const TextSpan(
-                    text: 'Test 2:  ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: AppColors.kBlackColor),
-                    children: [
-                      TextSpan(
-                          text:
-                              'Identifier sur quel port connecter chaque périphérique à l’unité centrale  ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                              color: AppColors.kBlackColor)),
-                    ]),
-              ),
-              RichText(
-                text: const TextSpan(
-                    text: 'Test 3:  ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: AppColors.kBlackColor),
-                    children: [
-                      TextSpan(
-                          text: 'Monter les éléments de cet ordinateur',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                              color: AppColors.kBlackColor)),
-                    ]),
-              ),
-              RichText(
-                text: const TextSpan(
-                    text: 'Test 4:  ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: AppColors.kBlackColor),
-                    children: [
-                      TextSpan(
-                          text: 'Démarrer l’ordinateur que vous avez monté',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                              color: AppColors.kBlackColor)),
-                    ]),
-              ),
-            ],
-          ),
+            ),
+            const Text(
+              "Par groupe de deux ou de trois répondez aux questions suivantes: ",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  wordSpacing: 3,
+                  color: AppColors.kBlackColor),
+            ),
+            RichText(
+              text: const TextSpan(
+                  text: 'Test 1:  ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: AppColors.kBlackColor),
+                  children: [
+                    TextSpan(
+                        text:
+                            'Identifier les composants de bases qui ont été remis à votre mère:',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: AppColors.kBlackColor)),
+                  ]),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            _simulation1(controller),
+            const SizedBox(
+              height: 20,
+            ),
+            RichText(
+              text: const TextSpan(
+                  text: 'Test 2:  ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: AppColors.kBlackColor),
+                  children: [
+                    TextSpan(
+                        text:
+                            'Identifier sur quel port connecter chaque périphérique à l’unité centrale  ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: AppColors.kBlackColor)),
+                  ]),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            _simulation2(controller),
+          ],
         ),
       ),
     );
@@ -1593,68 +1568,69 @@ class _Lesson1ViewState extends State<Lesson1View> {
       required Function() restartAllValue,
       required bool valueIsChoise}) {
     return Card(
-        color: AppColors.kDarkBlueDarkRGBO,
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-            child: Column(
-              children: [
-                Wrap(
-                  children: choiseValueList.keys
-                      .map(
-                        (e) => Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                              child: _iconOfValueForCheck(
-                                  value: e,
-                                  valueIsChoise: valueIsChoise,
-                                  valueResult: valueResult,
-                                  choiseValueList: choiseValueList),
-                            ),
-                            Checkbox(
-                              value: choiseValueList[e],
-                              onChanged: (bool? value) {
-                                updateChoiseValue(e, value);
-                              },
-                            ),
-                            Text(
-                              e,
-                              style: const TextStyle(
-                                color: AppColors.kBlackColor,
-                              ),
-                            ),
-                          ],
+      color: AppColors.kDarkBlueDarkRGBO,
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+        child: Column(
+          children: [
+            Wrap(
+              children: choiseValueList.keys
+                  .map(
+                    (e) => Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                          child: _iconOfValueForCheck(
+                              value: e,
+                              valueIsChoise: valueIsChoise,
+                              valueResult: valueResult,
+                              choiseValueList: choiseValueList),
                         ),
-                      )
-                      .toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: roundedSmallButton(Colors.blueAccent, 170, 45),
-                      onPressed: checkValueChoiseByUser,
-                      child: const Text('Valider',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                        Checkbox(
+                          value: choiseValueList[e],
+                          onChanged: (bool? value) {
+                            updateChoiseValue(e, value);
+                          },
+                        ),
+                        Text(
+                          e,
+                          style: const TextStyle(
+                            color: AppColors.kBlackColor,
+                          ),
+                        ),
+                      ],
                     ),
-                    IconButton(
-                        onPressed: restartAllValue,
-                        tooltip: 'restart',
-                        iconSize: 40,
-                        color: Colors.green,
-                        icon: const Icon(
-                          Icons.restart_alt,
-                        ))
-                  ],
-                )
+                  )
+                  .toList(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: roundedSmallButton(Colors.blueAccent, 170, 45),
+                  onPressed: checkValueChoiseByUser,
+                  child: const Text('Valider',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black)),
+                ),
+                IconButton(
+                    onPressed: restartAllValue,
+                    tooltip: 'restart',
+                    iconSize: 40,
+                    color: Colors.green,
+                    icon: const Icon(
+                      Icons.restart_alt,
+                    ))
               ],
-            )));
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   _iconOfValueForCheck(
@@ -1687,13 +1663,756 @@ class _Lesson1ViewState extends State<Lesson1View> {
     return AppColors.blue;
   }
 
-  _colorForExo(bool cableISAccept, bool checkValue) {
-    if (checkValue) {
-      if (cableISAccept) {
-        return AppColors.kGreenRGBO;
-      }
-      return AppColors.red;
-    }
-    return AppColors.blue;
+  _simulation1(Lesson1Controller controller) {
+    return Column(children: [
+      Wrap(spacing: 10, runSpacing: 10, children: [
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.elemt1,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.canCheck
+                              ? !controller.imageError1
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child: controller.elemt1.value.image.isNotEmpty
+                                    ? Image.asset(controller.elemt1.value.image)
+                                    : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.canCheck
+                                ? !controller.imageError1
+                                    ? !controller.textError1
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller:
+                                controller.elemt1.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.elemt1.value.image = controller.imageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.elemt1.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt2,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.canCheck
+                              ? !controller.imageError2
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child: controller.elemt2.value.image.isNotEmpty
+                                    ? Image.asset(controller.elemt2.value.image)
+                                    : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.canCheck
+                                ? !controller.imageError2
+                                    ? !controller.textError2
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller:
+                                controller.elemt2.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.elemt2.value.image = controller.imageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.elemt2.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.elemt3,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.canCheck
+                              ? !controller.imageError3
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child: controller.elemt3.value.image.isNotEmpty
+                                    ? Image.asset(controller.elemt3.value.image)
+                                    : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.canCheck
+                                ? !controller.imageError3
+                                    ? !controller.textError3
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller:
+                                controller.elemt3.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.elemt3.value.image = controller.imageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.elemt3.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.elemt4,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.canCheck
+                              ? !controller.imageError4
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child: controller.elemt4.value.image.isNotEmpty
+                                    ? Image.asset(controller.elemt4.value.image)
+                                    : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.canCheck
+                                ? !controller.imageError4
+                                    ? !controller.textError4
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller:
+                                controller.elemt4.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.elemt4.value.image = controller.imageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.elemt4.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+      ]),
+      const SizedBox(
+        height: 10,
+      ),
+      Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: controller.computerElements
+              .map(
+                (e) => Draggable(
+                    data: e.imageUrl,
+                    feedback: Material(
+                      child: Container(
+                        color: AppColors.gray,
+                        child: Image.asset(
+                          e.imageUrl,
+                          width: 100,
+                          height: 100,
+                        ),
+                      ),
+                    ),
+                    child: Container(
+                      color: AppColors.gray,
+                      child: Image.asset(
+                        e.imageUrl,
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                    childWhenDragging: const SizedBox.shrink(),
+                    onDragStarted: () {
+                      controller.updateImage(e.imageUrl);
+                    },
+                    onDragCompleted: () =>
+                        controller.removeElementToComputerList(e.imageUrl)),
+              )
+              .toList()),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: roundedSmallButton(Colors.blueAccent, 170, 45),
+            onPressed: () {
+              controller.checkUserAnswer(computerReponse);
+            },
+            child: const Text('Valider',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+          ),
+          IconButton(
+              onPressed: () {
+                controller.restStartProbleme(computerElements);
+              },
+              tooltip: 'restart',
+              iconSize: 40,
+              color: Colors.green,
+              icon: const Icon(
+                Icons.restart_alt,
+              )),
+        ],
+      )
+    ]);
+  }
+
+  _simulation2(Lesson1Controller controller) {
+    return Column(children: [
+      Wrap(spacing: 10, runSpacing: 10, children: [
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt1,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.portCanCheck
+                              ? !controller.portImageError1
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child:
+                                    controller.portElemt1.value.image.isNotEmpty
+                                        ? Image.asset(
+                                            controller.portElemt1.value.image)
+                                        : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.portCanCheck
+                                ? !controller.portImageError1
+                                    ? !controller.portTextError1
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller: controller
+                                .portElemt1.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.portElemt1.value.image = controller.portImageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.portElemt1.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt2,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.portCanCheck
+                              ? !controller.portImageError2
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child:
+                                    controller.portElemt2.value.image.isNotEmpty
+                                        ? Image.asset(
+                                            controller.portElemt2.value.image)
+                                        : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.portCanCheck
+                                ? !controller.portImageError2
+                                    ? !controller.portTextError2
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller: controller
+                                .portElemt2.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.portElemt2.value.image = controller.portImageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.portElemt2.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt3,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.portCanCheck
+                              ? !controller.portImageError3
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child:
+                                    controller.portElemt3.value.image.isNotEmpty
+                                        ? Image.asset(
+                                            controller.portElemt3.value.image)
+                                        : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.portCanCheck
+                                ? !controller.portImageError3
+                                    ? !controller.portTextError3
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller: controller
+                                .portElemt3.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.portElemt3.value.image = controller.portImageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.portElemt3.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt4,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.portCanCheck
+                              ? !controller.portImageError4
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child:
+                                    controller.portElemt4.value.image.isNotEmpty
+                                        ? Image.asset(
+                                            controller.portElemt4.value.image)
+                                        : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.portCanCheck
+                                ? !controller.portImageError4
+                                    ? !controller.portTextError4
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller: controller
+                                .portElemt4.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.portElemt4.value.image = controller.portImageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.portElemt4.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+        ValueListenableBuilder<ContainerNotifier>(
+            valueListenable: controller.portElemt5,
+            builder: (context, value, child) {
+              return DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return SizedBox(
+                    child: Column(
+                      children: [
+                        DottedBorder(
+                          borderType: BorderType.RRect,
+                          color: controller.portCanCheck
+                              ? !controller.portImageError5
+                                  ? Colors.green.shade600
+                                  : AppColors.red
+                              : AppColors.kBlackColor,
+                          strokeWidth: 4,
+                          dashPattern: const [8],
+                          child: ClipRRect(
+                            child: SizedBox(
+                                width: 120,
+                                height: 100,
+                                child:
+                                    controller.portElemt5.value.image.isNotEmpty
+                                        ? Image.asset(
+                                            controller.portElemt5.value.image)
+                                        : const SizedBox()),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: controller.portCanCheck
+                                ? !controller.portImageError5
+                                    ? !controller.portTextError5
+                                        ? Colors.green.shade600
+                                        : AppColors.red
+                                    : AppColors.red
+                                : AppColors.kBlackColor,
+                            width: 2,
+                          )),
+                          width: 120,
+                          height: 40,
+                          child: TextField(
+                            controller: controller
+                                .portElemt5.value.textEditingController,
+                            decoration: const InputDecoration(
+                              hintText: 'Entrer le titre',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onAccept: (data) {
+                  controller.portElemt5.value.image = controller.portImageDrap;
+                  controller.updateImage('');
+                },
+                onWillAccept: (data) {
+                  if (controller.portElemt5.value.image.isEmpty) {
+                    return true;
+                  }
+                  return false;
+                },
+              );
+            }),
+      ]),
+      const SizedBox(
+        height: 10,
+      ),
+      Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: controller.portElements
+              .map(
+                (e) => Draggable(
+                    data: e.imageUrl,
+                    feedback: Material(
+                      child: Container(
+                        color: AppColors.gray,
+                        child: Image.asset(
+                          e.imageUrl,
+                          width: 100,
+                          height: 100,
+                        ),
+                      ),
+                    ),
+                    child: Container(
+                      color: AppColors.gray,
+                      child: Image.asset(
+                        e.imageUrl,
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                    childWhenDragging: const SizedBox.shrink(),
+                    onDragStarted: () {
+                      controller.portUpdateImage(e.imageUrl);
+                    },
+                    onDragCompleted: () =>
+                        controller.removeElementToPortList(e.imageUrl)),
+              )
+              .toList()),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: roundedSmallButton(Colors.blueAccent, 170, 45),
+            onPressed: () {
+              controller.checkPortUserAnswer(portReponse);
+            },
+            child: const Text('Valider',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+          ),
+          IconButton(
+              onPressed: () {
+                controller.restStartPortProbleme(port);
+              },
+              tooltip: 'restart',
+              iconSize: 40,
+              color: Colors.green,
+              icon: const Icon(
+                Icons.restart_alt,
+              )),
+        ],
+      )
+    ]);
   }
 }

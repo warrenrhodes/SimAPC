@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
         height: 56,
         child: ElevatedButton(
             style: roundedSmallButton(AppColors.kBlue300, 20, 50),
-            child: const Text('Conexion',
+            child: const Text('Connexion',
                 style: TextStyle(color: Colors.black, fontSize: 20)),
             onPressed: () {
               if (userController.text.trim() == 'admin' &&
